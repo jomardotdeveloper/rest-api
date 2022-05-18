@@ -79,6 +79,9 @@ class LRController extends APIController
         if ($validated->fails()) {
             return $this->sendError($validated->messages()->all());
         }
+
+        // fms.project2022@gmail.com
+        // project2022
         $user = User::create([
             "email" => $request->get("email"),
             "password" => Hash::make($request->get("password"))

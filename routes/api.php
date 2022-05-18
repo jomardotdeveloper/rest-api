@@ -7,6 +7,7 @@ use App\Http\Controllers\LRController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,7 @@ Route::get("program/index/{id?}", [ProgramController::class, "getAll"]);
 Route::get("program/delete/{id}", [ProgramController::class, "delete"]);
 Route::post("program/create", [ProgramController::class, "create"]);
 Route::post("program/update/{id}", [ProgramController::class, "edit"]);
+
+Route::get('send-mail/{email}', function ($email) {
+    Mail::to($email)->send(new \App\Mail\MyTestMail());
+});
